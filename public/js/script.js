@@ -180,7 +180,48 @@ var getPieceValue = function (piece, x, y) {
 
 /* Board visualization and games state handling */
 
+var keys = {37: 1, 38: 1, 39: 1, 40: 1};
+
+function preventDefault(e) {
+  e.preventDefault();
+}
+
+function preventDefaultForScrollKeys(e) {
+  if (keys[e.keyCode]) {
+    preventDefault(e);
+    return false;
+  }
+}
+
+// modern Chrome requires { passive: false } when adding event
+var supportsPassive = false;
+try {
+  window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+    get: function () { supportsPassive = true; } 
+  }));
+} catch(e) {}
+
+var wheelOpt = supportsPassive ? { passive: false } : false;
+var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+
+function disableScroll() {
+    window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
+    window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+    window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+    window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+}
+  
+  // call this to Enable
+function enableScroll() {
+    window.removeEventListener('DOMMouseScroll', preventDefault, false);
+    window.removeEventListener(wheelEvent, preventDefault, wheelOpt); 
+    window.removeEventListener('touchmove', preventDefault, wheelOpt);
+    window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+}
+
 var onDragStart = function (source, piece, position, orientation) {
+    disableScroll();
+
     if (game.in_checkmate() === true || game.in_draw() === true ||
         piece.search(/^b/) !== -1) {
         return false;
@@ -277,6 +318,8 @@ var onDrop = function (source, target) {
 };
 
 var onSnapEnd = function () {
+    enableScroll();
+    
     if (!gameStarted) {
         window.onbeforeunload = function () {
             return "You'll lose all your progress. Continue?";
@@ -285,6 +328,7 @@ var onSnapEnd = function () {
         document.getElementById('move-history-heading').style.display = 'block';
         gameStarted = 1;
     }
+    
     board.position(game.fen());
 };
 
