@@ -27,8 +27,19 @@ td {
     -o-transition: all .2s ease-in;
     -webkit-transition: all .2s ease-in;
     transition: all .2s ease-in;
+    padding: 15px;
 }
 
-#leaderboard-container:hover, #leaderboard-container:active {
+#leaderboard-container:hover {
     background-color: wheat !important;
+}
+
+@media only screen and (max-width: 991px) {
+    #leaderboard-container{
+        padding: 0px;
+    }
+
+    #leaderboard-container:hover {
+        background-color: transparent !important;
+    }
 }
