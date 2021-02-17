@@ -20,3 +20,15 @@ a {
 td {
     width: 650px;
 }
+
+#leaderboard-container{
+    background-color: transparent;
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+}
+
+#leaderboard-container:hover, #leaderboard-container:active {
+    background-color: wheat !important;
+}

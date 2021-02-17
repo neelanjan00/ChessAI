@@ -39,7 +39,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5>Leaderboard</h5>
+                    <h5 class="m-0">Leaderboard</h5>
                     <span type="button" class="close" style="position: absolute; right: 10px;" data-dismiss="modal">&times;</span>
                 </div>
                 <div class="modal-body">
@@ -62,7 +62,9 @@
             <div class="col-12">
                 <center>
                     <h1 class="my-4"><b>Chess AI</h1></b>
-                    <button class="btn btn-secondary" onclick="showLeaderboard();" style="position: absolute; right: 15px; top: 25px; border-radius: 0;">Leaderboard</button>
+                    <span id="leaderboard-container" onclick="showLeaderboard();" style="position: absolute; right: 20px; top: 15px; border-radius: 100%; padding: 15px;">
+                        <img src="./img/icons/leaderboard.svg" style="cursor: pointer;" width="50" alt="leaderboard icon" />
+                    </span>
                 </center>
             </div>
         </div>
