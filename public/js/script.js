@@ -429,14 +429,7 @@ function formatDate(date) {
 }
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyBSlmCIVxKQPAO5p0auSLPQzoCYz9IFr3g",
-    authDomain: "playchessai.firebaseapp.com",
-    projectId: "playchessai",
-    storageBucket: "playchessai.appspot.com",
-    messagingSenderId: "614903980947",
-    appId: "1:614903980947:web:c0cc972e3b1d2e1645fe66"
-};
+const firebaseConfig; /*Replace with your own Firebase app configuration*/
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
