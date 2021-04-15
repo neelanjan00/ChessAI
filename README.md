@@ -1,2 +1,0 @@
-# ChessAI
-An AI chess engine developed in Javascript that implements a Mini-Max algorithm to perform an adversarial search with the objective of finding the next best move. To make the process of searching the game tree more efficient, Alpha-Beta pruning is incorporated in the logic. The heuristic function to evaluate the board position is defined as the sum of individual piece cost weighted according to the piece-square table. Finally, there's a leaderboard for those who successfully beat the AI, which is implemented using Firebase Cloud Firestore
