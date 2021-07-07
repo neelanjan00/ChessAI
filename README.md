@@ -16,7 +16,7 @@
 ## Usage
 
 ```sh
-Execute the `public/index.html` file
+Execute the public/index.html file
 ```
 
 ## Author
